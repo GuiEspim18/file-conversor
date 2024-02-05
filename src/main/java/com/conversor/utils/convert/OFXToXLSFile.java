@@ -11,30 +11,13 @@ import java.io.*;
 public class OFXToXLSFile {
 
     public static void convert(String inputFile, String outputFile) {
-        try {
-            // Carregar arquivo OFX
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(inputFile);
 
-            // Extrair dados relevantes do arquivo OFX
-            NodeList transactionList = doc.getElementsByTagName("STMTTRN");
+    }
 
-            // Criar um novo arquivo XLS
-            try (FileOutputStream fos = new FileOutputStream(outputFile)) {
-                for (int i = 0; i < transactionList.getLength(); i++) {
-                    Element transaction = (Element) transactionList.item(i);
-                    String date = transaction.getElementsByTagName("DTPOSTED").item(0).getTextContent();
-                    String description = transaction.getElementsByTagName("MEMO").item(0).getTextContent();
-                    String amount = transaction.getElementsByTagName("TRNAMT").item(0).getTextContent();
-                    fos.write((date + "\t" + description + "\t" + amount + "\n").getBytes());
-                }
-            }
-
-            System.out.println("Arquivo XLS criado com sucesso.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private static String extractValue (String line, String tag) {
+        int statIndex = line.indexOf("<" + tag + ">") + tag.length() + 2;
+        int endIndex = line.indexOf("</" + tag + ">");
+        return line.substring(statIndex, endIndex);
     }
 
 }
