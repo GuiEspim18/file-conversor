@@ -10,6 +10,14 @@
   <name>file-conversor</name>
   <url>http://maven.apache.org</url>
 
+  <repositories>
+    <repository>
+      <id>ofx4j-repo</id>
+      <url>https://raw.github.com/stoicflame/ofx4j/mvn-repo/</url>
+    </repository>
+  </repositories>
+
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
