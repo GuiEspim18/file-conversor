@@ -2,14 +2,11 @@ package com.conversor.utils.convert;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
 
 public class OFXToXLSFile {
 
